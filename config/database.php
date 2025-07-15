@@ -1,10 +1,22 @@
 <?php
 class Database {
-    private $host = 'localhost';
-    private $dbname = 'alquimia_technologic';
-    private $username = 'root';
-    private $password = '';
+    /**
+     * Parámetros de conexión. Permiten sobrescribir valores mediante variables
+     * de entorno para facilitar la configuración en distintos entornos de
+     * ejecución (desarrollo, pruebas, producción).
+     */
+    private $host;
+    private $dbname;
+    private $username;
+    private $password;
     private $pdo;
+
+    public function __construct() {
+        $this->host = getenv('DB_HOST') ?: (defined('DB_HOST') ? DB_HOST : 'localhost');
+        $this->dbname = getenv('DB_NAME') ?: (defined('DB_NAME') ? DB_NAME : 'alquimia_technologic');
+        $this->username = getenv('DB_USER') ?: (defined('DB_USER') ? DB_USER : 'root');
+        $this->password = getenv('DB_PASS') ?: (defined('DB_PASS') ? DB_PASS : '');
+    }
     
     public function connect() {
         try {

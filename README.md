@@ -43,7 +43,9 @@ Una tienda web completa desarrollada en PHP con MySQL, inspirada en el diseño m
 
 3. **Configurar la conexión**:
    - Abre `config/database.php`
-   - Verifica que los datos de conexión sean correctos:
+   - Verifica que los datos de conexión sean correctos o define las variables de
+     entorno `DB_HOST`, `DB_NAME`, `DB_USER` y `DB_PASS` para personalizar la
+     conexión sin modificar el archivo:
      ```php
      private $host = 'localhost';
      private $dbname = 'alquimia_technologic';
